@@ -4,14 +4,20 @@
   "main": "index.js",
   "scripts": {
   "start": "node app.js",
-  "test": "echo \"No tests yet\""
-},
+ },
+
+    "start": "node app.js",
+    "test": "mocha"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "mocha": "^11.1.0"
   }
 }
-
