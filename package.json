@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "start": "node app.js",
- },
-
     "start": "node app.js",
     "test": "mocha"
   },
@@ -21,3 +18,4 @@
     "mocha": "^11.1.0"
   }
 }
+
