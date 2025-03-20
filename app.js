@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+
+// Allow the port to be set via an environment variable, default to 3000
+const port = process.env.PORT || 3000;
 
 // Define a route
 app.get('/', (req, res) => {
@@ -17,3 +19,4 @@ function add(a, b) {
 }
 
 module.exports = { add };
+

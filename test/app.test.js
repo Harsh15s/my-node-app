@@ -1,23 +1,35 @@
-// test/app.test.js
-const assert = require('chai').assert;
-const app = require('../app'); // Import the app file
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const app = require('../app'); // Import the app
 
-describe('My Node.js App', function() {
-  describe('add()', function() {
-    it('should return 3 when adding 1 and 2', function() {
-      const result = app.add(1, 2);
-      assert.strictEqual(result, 3);
+chai.use(chaiHttp);
+const { expect } = chai;
+
+describe('Test the app', () => {
+    let server;
+
+    before((done) => {
+        // Start the app on a different port for testing to avoid conflicts
+        server = app.listen(3001, done); // Use port 3001 for testing
     });
 
-    it('should return -1 when adding 1 and -2', function() {
-      const result = app.add(1, -2);
-      assert.strictEqual(result, -1);
+    after((done) => {
+        // Close the server after tests
+        server.close(done);
     });
 
-    it('should return 0 when adding 0 and 0', function() {
-      const result = app.add(0, 0);
-      assert.strictEqual(result, 0);
+    it('should return 200 for / route', (done) => {
+        chai.request(server)
+            .get('/')
+            .end((err, res) => {
+                expect(res).to.have.status(200);
+                done();
+            });
     });
-  });
+
+    it('should correctly add numbers', () => {
+        const result = app.add(2, 3);
+        expect(result).to.equal(5);
+    });
 });
 
