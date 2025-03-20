@@ -1,22 +1,10 @@
 const express = require('express');
 const app = express();
 
-// Allow the port to be set via an environment variable, default to 3000
-const port = process.env.PORT || 3000;
-
-// Define a route
+// Simple route for testing
 app.get('/', (req, res) => {
-  res.send('Hello, world!');
+  res.status(200).send('Hello, world!');
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
-
-function add(a, b) {
-  return a + b;
-}
-
-module.exports = { add };
+module.exports = app; // Export app for testing
 

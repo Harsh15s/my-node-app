@@ -18,18 +18,15 @@ describe('Test the app', () => {
         server.close(done);
     });
 
-    it('should return 200 for / route', (done) => {
+    // Example test case
+    it('should return status 200 for GET /', (done) => {
         chai.request(server)
             .get('/')
             .end((err, res) => {
                 expect(res).to.have.status(200);
+                expect(res.text).to.equal('Hello, world!');
                 done();
             });
-    });
-
-    it('should correctly add numbers', () => {
-        const result = app.add(2, 3);
-        expect(result).to.equal(5);
     });
 });
 
